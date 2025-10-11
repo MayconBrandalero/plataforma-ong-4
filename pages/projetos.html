@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ONG Esperança - Projetos</title>
@@ -8,43 +13,62 @@
 <body>
   <header>
     <h1>Projetos Sociais</h1>
-    <nav>
-      <ul>
+    <nav class="navbar">
+      <ul class="menu">
         <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
+        <li class="has-dropdown">
+          <a href="projetos.html">Projetos</a>
+          <ul class="dropdown">
+            <li><a href="#educacao">Educação</a></li>
+            <li><a href="#saude">Saúde</a></li>
+          </ul>
+        </li>
         <li><a href="cadastro.html">Cadastro</a></li>
       </ul>
+      <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
     </nav>
   </header>
 
   <main>
     <section>
-      <h2>Educação para Todos</h2>
-      <picture>
-        <source srcset="../assets/images/sala_aula.webp" type="image/webp">
-        <img src="../assets/images/sala_aula.jpg" alt="Crianças em sala de aula comunitária" width="600">
-      </picture>
-      <p>
-        Oferecemos reforço escolar e atividades culturais para crianças em situação de vulnerabilidade.
-      </p>
+      <h2>Conheça nossos projetos sociais</h2>
+      <p>Veja abaixo as iniciativas que estão mudando vidas em nossa comunidade.</p>
+    </section>
+
+    <section id="educacao">
+      <div class="card">
+        <img src="../assets/images/sala_aula.jpg" alt="Crianças em sala de aula comunitária">
+        <div class="card-title">Educação para Todos</div>
+        <div class="card-tags">
+          <span class="badge primary">Educação</span>
+          <span class="badge info">2025</span>
+        </div>
+        <p>
+          Oferecemos reforço escolar e atividades culturais para crianças em situação de vulnerabilidade.
+        </p>
+        <button class="button" onclick="showModal('Inscreva-se para o projeto Educação para Todos!')">Quero Participar</button>
+      </div>
+    </section>
+
+    <section id="saude">
+      <div class="card">
+        <img src="../assets/images/cuidados.jpg" alt="Atendimento de saúde voluntário">
+        <div class="card-title">Saúde Comunitária</div>
+        <div class="card-tags">
+          <span class="badge secondary">Saúde</span>
+          <span class="badge info">2025</span>
+        </div>
+        <p>
+          Promovemos campanhas de vacinação, palestras e atendimentos gratuitos.
+        </p>
+        <button class="button" onclick="showModal('Inscreva-se para o projeto Saúde Comunitária!')">Quero Participar</button>
+      </div>
     </section>
 
     <section>
-      <h2>Saúde Comunitária</h2>
-      <picture>
-        <source srcset="../assets/images/cuidados.webp" type="image/webp">
-        <img src="../assets/images/cuidados.jpg" alt="Atendimento de saúde voluntário" width="600">
-      </picture>
-      <p>
-        Promovemos campanhas de vacinação, palestras e atendimentos gratuitos.
-      </p>
-    </section>
-
-    <section>
-      <h2>Como Ajudar</h2>
-      <p>
+      <div class="alert info">
         Você pode apoiar nossos projetos com doações financeiras, doação de materiais ou se voluntariando.
-      </p>
+      </div>
       <p>
         Acesse nossa <a href="cadastro.html">página de cadastro</a> e faça parte dessa transformação!
       </p>
@@ -54,5 +78,14 @@
   <footer>
     <p>&copy; 2025 ONG Esperança. Todos os direitos reservados.</p>
   </footer>
+
+  <div class="toast"></div>
+  <div class="modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fechar">&times;</button>
+      <div class="modal-message">Mensagem do modal</div>
+    </div>
+  </div>
+  <script src="../js/menu.js"></script>
 </body>
 </html>

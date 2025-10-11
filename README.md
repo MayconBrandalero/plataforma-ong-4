@@ -3,13 +3,33 @@
 Projeto acadêmico de site institucional para uma ONG fictícia.
 
 ## Estrutura de Páginas
-- `index.html`: Apresentação geral da ONG.
-- `projetos.html`: Apresentação sobre os projetos realizados.
-- `cadastro.html`: Formulário de inscrição.
 
-## Tecnologias
-- HTML5
-- Imagens otimizadas (`.webp` e `.jpg`)
+- `index.html`: Apresentação geral da ONG, missão, valores e projetos em destaque.
+- `projetos.html`: Detalhes dos projetos sociais realizados.
+- `cadastro.html`: Formulário de inscrição para voluntários e apoiadores.
 
-## Como visualizar
-Basta abrir o arquivo `index.html` em qualquer navegador moderno e navegar pelos links do menu.
+## Tecnologias e Design
+
+- **HTML5** semântica
+- **CSS3** modular e responsivo
+- **Imagens otimizadas** (`.webp` e `.jpg`)
+- **Acessibilidade**: uso de `alt`, `aria-label` e contraste adequado
+
+## Como Visualizar
+
+1. Baixe ou clone este repositório.
+2. Abra o arquivo `pages/index.html` em qualquer navegador moderno.
+3. Navegue pelas páginas usando o menu.
+
+## Estrutura de Pastas
+
+```
+/assets/images      # Imagens
+/css                # CSS modular
+/js                 # Scripts JS
+/pages              # Páginas HTML
+```
+
+## Autor
+
+Maycon Brandalero

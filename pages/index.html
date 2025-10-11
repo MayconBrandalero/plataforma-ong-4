@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ONG Esperança - Início</title>
@@ -8,22 +13,31 @@
 <body>
   <header>
     <h1>ONG Esperança</h1>
-    <nav>
-      <ul>
+    <nav class="navbar">
+      <ul class="menu">
         <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
+        <li class="has-dropdown">
+          <a href="projetos.html">Projetos</a>
+          <ul class="dropdown">
+            <li><a href="projetos.html#educacao">Educação</a></li>
+            <li><a href="projetos.html#saude">Saúde</a></li>
+          </ul>
+        </li>
         <li><a href="cadastro.html">Cadastro</a></li>
       </ul>
+      <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
     </nav>
   </header>
 
   <main>
     <section>
       <h2>Sobre Nós</h2>
-      <picture>
-        <source srcset="../assets/images/ong1.webp" type="image/webp">
-        <img src="../assets/images/ong1.jpg" alt="Equipe da ONG em ação social" width="600">
-      </picture>
+      <div class="img-section">
+        <picture>
+          <source srcset="../assets/images/ong1.webp" type="image/webp">
+          <img src="../assets/images/ong1.jpg" alt="Equipe da ONG em ação social">
+        </picture>
+      </div>
       <p>
         Somos uma organização sem fins lucrativos dedicada a transformar vidas por meio de
         projetos sociais. Trabalhamos com educação, saúde e sustentabilidade.
@@ -40,6 +54,30 @@
     </section>
 
     <section>
+      <h2>Projetos em Destaque</h2>
+      <div class="card">
+        <img src="../assets/images/sala_aula.jpg" alt="Projeto Educação">
+        <div class="card-title">Educação para Todos</div>
+        <div class="card-tags">
+          <span class="badge primary">Educação</span>
+          <span class="badge info">2025</span>
+        </div>
+        <p>Oferecemos reforço escolar e atividades culturais para crianças em situação de vulnerabilidade.</p>
+        <button class="button" onclick="showModal('Inscreva-se para este projeto!')">Quero Participar</button>
+      </div>
+      <div class="card">
+        <img src="../assets/images/cuidados.jpg" alt="Projeto Saúde">
+        <div class="card-title">Saúde Comunitária</div>
+        <div class="card-tags">
+          <span class="badge secondary">Saúde</span>
+          <span class="badge info">2025</span>
+        </div>
+        <p>Promovemos campanhas de vacinação, palestras e atendimentos gratuitos.</p>
+        <button class="button" onclick="showModal('Saiba como ajudar na área da saúde!')">Quero Ajudar</button>
+      </div>
+    </section>
+
+    <section>
       <h2>Contato</h2>
       <p>Email: contato@ongesperanca.org</p>
       <p>Telefone: (11) 99999-9999</p>
@@ -49,5 +87,14 @@
   <footer>
     <p>&copy; 2025 ONG Esperança. Todos os direitos reservados.</p>
   </footer>
+
+  <div class="toast"></div>
+  <div class="modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fechar">&times;</button>
+      <div class="modal-message">Mensagem do modal</div>
+    </div>
+  </div>
+  <script src="../js/menu.js"></script>
 </body>
 </html>
