@@ -8,42 +8,53 @@
   <link rel="stylesheet" href="css/utilities.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONG Esperança - SPA</title>
+  <title>ONG Esperança - Início</title>
 </head>
 <body>
+  <a class="skip-link" href="#app">Pular para o conteúdo</a>
   <header>
-    <h1>ONG Esperança</h1>
-    <nav class="navbar" aria-label="Navegação principal">
-      <ul class="menu">
-        <li><a href="#/" data-link>Início</a></li>
-        <li class="has-dropdown">
-          <a href="#/projetos" data-link>Projetos</a>
-          <ul class="dropdown">
-            <li><a href="#/projetos#educacao" data-link>Educação</a></li>
-            <li><a href="#/projetos#saude" data-link>Saúde</a></li>
-          </ul>
-        </li>
-        <li><a href="#/cadastro" data-link>Cadastro</a></li>
-      </ul>
-      <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-    </nav>
+    <div class="header-inner">
+      <h1>ONG Esperança</h1>
+      <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <ul class="menu" id="main-menu">
+          <li><a href="#/" data-link>Início</a></li>
+          <li class="has-dropdown">
+            <a href="#/projetos" data-link>Projetos</a>
+            <ul class="dropdown" role="menu" aria-hidden="true">
+              <li><a href="#/projetos#educacao" data-link>Educação</a></li>
+              <li><a href="#/projetos#saude" data-link>Saúde</a></li>
+            </ul>
+          </li>
+          <li><a href="#/cadastro" data-link>Cadastro</a></li>
+        </ul>
+        <div class="accessibility-controls">
+          <button class="accessibility-button" id="theme-toggle" aria-pressed="false">Modo Escuro</button>
+          <button class="accessibility-button" id="contrast-toggle" aria-pressed="false">Alto Contraste</button>
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menu" aria-controls="main-menu" aria-expanded="false">&#9776;</button>
+      </nav>
+    </div>
   </header>
 
-  <main id="app"></main>
+  <main id="app" role="main">
+    <!-- SPA content carregado via js/app.js -->
+  </main>
 
   <footer>
     <p>&copy; 2025 ONG Esperança. Todos os direitos reservados.</p>
   </footer>
 
-  <div class="toast" aria-live="polite"></div>
-  <div class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <div class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <div class="modal-content">
       <button class="modal-close" aria-label="Fechar">&times;</button>
       <div class="modal-message">Mensagem do modal</div>
     </div>
   </div>
 
-  <script src="js/menu.js"></script>
+  <script type="module" src="js/menu.js"></script>
+  <script type="module" src="js/theme.js"></script>
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
