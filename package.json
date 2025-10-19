@@ -1,0 +1,24 @@
+{
+  "name": "plataforma-ong-4",
+  "version": "1.0.0",
+  "description": "Plataforma ONG Esperança - SPA acessível e otimizada",
+  "main": "js/app.js",
+  "scripts": {
+    "build:js": "esbuild js/app.js --bundle --minify --sourcemap --outfile=dist/js/app.min.js",
+    "build:css": "cleancss -o dist/css/styles.min.css css/variables.css css/base.css css/layout.css css/components.css css/utilities.css",
+    "build:html": "html-minifier-terser --input-dir pages --output-dir dist/pages --collapse-whitespace --remove-comments --minify-css true --minify-js true",
+    "build": "npm run build:js && npm run build:css && npm run build:html",
+    "start": "npx http-server -c-1 -p 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MayconBrandalero/plataforma-ong-4.git"
+  },
+  "author": "Maycon Brandalero",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.18.0",
+    "clean-css-cli": "^5.4.0",
+    "html-minifier-terser": "^7.0.0"
+  }
+}
