@@ -18,3 +18,11 @@
 .gap-3 { gap: var(--space-3); }
 .gap-4 { gap: var(--space-4); }
 .w-100 { width: 100%; }
+.hidden { display: none !important; }
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
