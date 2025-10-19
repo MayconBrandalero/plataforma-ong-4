@@ -3,6 +3,7 @@ import { saveCadastro, loadCadastro } from '../storage.js';
 
 export function render() {
   return `
+  <main id="app" role="main">
   <section>
     <h2>Formulário de Cadastro</h2>
     <div class="img-section">
@@ -15,19 +16,20 @@ export function render() {
       <fieldset>
         <legend>Informações Pessoais</legend>
         <label for="nome">Nome Completo:</label>
-        <input type="text" id="nome" name="nome" required>
+        <input type="text" id="nome" name="nome" required aria-required="true" aria-describedby="nome-help">
+        <span id="nome-help" class="visually-hidden">Informe o nome completo, mínimo 3 caracteres</span>
 
         <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required aria-required="true">
 
         <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" pattern="\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}" placeholder="000.000.000-00" required>
+        <input type="text" id="cpf" name="cpf" pattern="\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}" placeholder="000.000.000-00" required aria-required="true">
 
         <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" pattern="\\(\\d{2}\\)\\s?\\d{4,5}-\\d{4}" placeholder="(11) 99999-9999" required>
+        <input type="tel" id="telefone" name="telefone" pattern="\\(\\d{2}\\)\\s?\\d{4,5}-\\d{4}" placeholder="(11) 99999-9999" required aria-required="true">
 
         <label for="data">Data de Nascimento:</label>
-        <input type="date" id="data" name="data" required>
+        <input type="date" id="data" name="data" required aria-required="true">
       </fieldset>
 
       <fieldset>
@@ -48,6 +50,7 @@ export function render() {
       <button type="submit" class="button">Enviar Cadastro</button>
     </form>
   </section>
+  </main>
   `;
 }
 

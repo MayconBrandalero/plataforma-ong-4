@@ -11,25 +11,28 @@
   <title>ONG Esperança - Cadastro</title>
 </head>
 <body>
+  <a class="skip-link" href="#content">Pular para o conteúdo</a>
   <header>
-    <h1>Cadastro</h1>
-    <nav class="navbar">
-      <ul class="menu">
-        <li><a href="index.html">Início</a></li>
-        <li class="has-dropdown">
-          <a href="projetos.html">Projetos</a>
-          <ul class="dropdown">
-            <li><a href="projetos.html#educacao">Educação</a></li>
-            <li><a href="projetos.html#saude">Saúde</a></li>
-          </ul>
-        </li>
-        <li><a href="cadastro.html">Cadastro</a></li>
-      </ul>
-      <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-    </nav>
+    <div class="header-inner">
+      <h1>Cadastro</h1>
+      <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="index.html">Início</a></li>
+          <li class="has-dropdown">
+            <a href="projetos.html">Projetos</a>
+            <ul class="dropdown">
+              <li><a href="projetos.html#educacao">Educação</a></li>
+              <li><a href="projetos.html#saude">Saúde</a></li>
+            </ul>
+          </li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+        <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main id="content">
     <section>
       <h2>Formulário de Cadastro</h2>
       <div class="img-section">
@@ -38,7 +41,7 @@
           <img src="../assets/images/formulario_cadastro.jpg" alt="Formulário de cadastro da ONG Esperança">
         </picture>
       </div>
-      <form action="#" method="post" novalidate onsubmit="event.preventDefault(); showToast('Cadastro enviado com sucesso!');">
+      <form action="#" id="cadastro-form" method="post" novalidate>
         <fieldset>
           <legend>Informações Pessoais</legend>
           <label for="nome">Nome Completo:</label>
@@ -81,13 +84,47 @@
     <p>&copy; 2025 ONG Esperança. Todos os direitos reservados.</p>
   </footer>
 
-  <div class="toast"></div>
-  <div class="modal">
+  <div class="toast" role="status" aria-live="polite"></div>
+  <div class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <div class="modal-content">
       <button class="modal-close" aria-label="Fechar">&times;</button>
       <div class="modal-message">Mensagem do modal</div>
     </div>
   </div>
-  <script src="../js/menu.js"></script>
+  <script type="module" src="../js/menu.js"></script>
+  <script type="module" src="../js/theme.js"></script>
+  <script type="module">
+    import { bindCadastroForm } from '../js/ui.js';
+    import { saveCadastro, loadCadastro } from '../js/storage.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('cadastro-form');
+      bindCadastroForm(form, saveCadastro);
+      const data = loadCadastro();
+      if (data && form) {
+        Object.keys(data).forEach(k => {
+          const el = form.elements[k];
+          if (el) el.value = data[k];
+        });
+      }
+      import('../js/theme.js').then(m => {
+        const tbtn = document.getElementById('theme-toggle');
+        const cbtn = document.getElementById('contrast-toggle');
+        if (tbtn) {
+          tbtn.addEventListener('click', () => {
+            const next = m.toggleTheme('dark');
+            tbtn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+          });
+        }
+        if (cbtn) {
+          cbtn.addEventListener('click', () => {
+            const cur = document.documentElement.getAttribute('data-theme');
+            const next = cur === 'high-contrast' ? '' : 'high-contrast';
+            m.toggleTheme(next === '' ? 'default' : 'high-contrast');
+            cbtn.setAttribute('aria-pressed', next === 'high-contrast' ? 'true' : 'false');
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

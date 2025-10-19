@@ -2,6 +2,7 @@ import { showModal } from '../ui.js';
 
 export function render() {
   return `
+  <main id="app" role="main">
   <section>
     <h2>Sobre Nós</h2>
     <div class="img-section">
@@ -51,16 +52,17 @@ export function render() {
 
   <section>
     <h2>Contato</h2>
-    <p>Email: contato@ongesperanca.org</p>
-    <p>Telefone: (11) 99999-9999</p>
+    <p>Email: <a href="mailto:contato@ongesperanca.org">contato@ongesperanca.org</a></p>
+    <p>Telefone: <a href="tel:+5511999999999">(11) 99999-9999</a></p>
   </section>
+  </main>
   `;
 }
 
 export function init() {
   document.querySelectorAll('.btn-modal').forEach(b => {
-    b.addEventListener('click', () => {
-      showModal(b.dataset.msg || 'Mensagem do modal');
+    b.addEventListener('click', (e) => {
+      showModal(b.dataset.msg || 'Mensagem do modal', e.currentTarget);
     });
   });
 }

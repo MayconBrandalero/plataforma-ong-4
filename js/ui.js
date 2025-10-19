@@ -7,12 +7,17 @@ export function showToast(msg) {
   }
 }
 
-export function showModal(msg) {
+export function showModal(msg, opener) {
   const modal = document.querySelector('.modal');
   if (modal) {
     modal.querySelector('.modal-message').textContent = msg;
     modal.style.display = 'flex';
     modal.setAttribute('aria-hidden', 'false');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (focusable) focusable.focus();
+    modal._lastActive = opener || document.activeElement;
   }
 }
 
@@ -21,6 +26,8 @@ export function closeModal() {
   if (modal) {
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden', 'true');
+    if (modal._lastActive) modal._lastActive.focus();
+    modal._lastActive = null;
   }
 }
 
@@ -47,6 +54,7 @@ function addError(input, message) {
   if (!msg) {
     msg = document.createElement('span');
     msg.className = 'error-message';
+    msg.setAttribute('role', 'status');
     input.parentElement.appendChild(msg);
   }
   msg.textContent = message;
