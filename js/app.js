@@ -16,6 +16,7 @@ async function router() {
   const path = parseHash();
   const routeLoader = routes[path] || routes['/'];
   const module = await routeLoader();
+  if (!main) return;
   main.innerHTML = module.render();
   if (module.init) module.init();
   highlightActiveLink(path);
@@ -23,13 +24,16 @@ async function router() {
 }
 
 function highlightActiveLink(path) {
-  document.querySelectorAll('.menu a').forEach(a => {
-    const href = a.getAttribute('href') || '';
+  document.querySelectorAll('.menu a, a[data-link]').forEach(a => {
+    const href = a.getAttribute('href') || a.getAttribute('data-href') || '';
     const linkPath = href.replace('#', '') || '/';
-    if (linkPath.startsWith(path)) a.classList.add('active');
+    if (linkPath === path) a.classList.add('active');
     else a.classList.remove('active');
   });
 }
 
 window.addEventListener('hashchange', router);
-window.addEventListener('DOMContentLoaded', router);
+window.addEventListener('DOMContentLoaded', () => {
+  import('./theme.js').then(m => m.applySavedTheme());
+  router();
+});
