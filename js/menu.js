@@ -18,10 +18,12 @@ document.addEventListener('DOMContentLoaded', function () {
   if (modal && modalClose) {
     modalClose.addEventListener('click', () => {
       modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
     });
     window.showModal = function (msg) {
       modal.querySelector('.modal-message').textContent = msg;
       modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
     }
   }
 
@@ -33,4 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => { toast.style.display = 'none'; }, 3000);
     }
   }
+
+  document.body.addEventListener('click', function (e) {
+    const link = e.target.closest('a[data-link]');
+    if (link) {
+      menu && menu.classList.remove('open');
+    }
+  });
 });

@@ -51,6 +51,6 @@ section {
   section { grid-column: span 2; }
 }
 @media (max-width: 480px) {
-  main { grid-template-columns: 1fr; padding: var(--space-1);}
+  main { grid-template-columns: 1fr; padding: var(--space-1); }
   section { grid-column: span 1; }
 }
