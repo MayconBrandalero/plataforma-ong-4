@@ -2,6 +2,7 @@ import { showModal } from '../ui.js';
 
 export function render() {
   return `
+  <main id="app" role="main">
   <section>
     <h2>Conheça nossos projetos sociais</h2>
     <p>Veja abaixo as iniciativas que estão mudando vidas em nossa comunidade.</p>
@@ -34,20 +35,21 @@ export function render() {
   </section>
 
   <section>
-    <div class="alert info">
+    <div class="alert info" role="status">
       Você pode apoiar nossos projetos com doações financeiras, doação de materiais ou se voluntariando.
     </div>
     <p>
       Acesse nossa <a href="#/cadastro" data-link>página de cadastro</a> e faça parte dessa transformação!
     </p>
   </section>
+  </main>
   `;
 }
 
 export function init() {
   document.querySelectorAll('.btn-modal').forEach(b => {
-    b.addEventListener('click', () => {
-      showModal(b.dataset.msg || 'Mensagem do modal');
+    b.addEventListener('click', (e) => {
+      showModal(b.dataset.msg || 'Mensagem do modal', e.currentTarget);
     });
   });
 }
