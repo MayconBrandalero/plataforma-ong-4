@@ -1,32 +1,35 @@
-# ONG Esperança
+# ONG Esperança — Plataforma
 
-Versão entregue: Single Page Application (SPA) com templates JavaScript, validação de formulário e armazenamento local.
+Versão: 1.0.0
 
-Estrutura principal
-- index.html (raiz) — entrada SPA
-- css/ — estilos
-- js/
-  - app.js — roteador e bootstrap
-  - menu.js — menu, modal, toast
-  - ui.js — UI, validações e binding do formulário
-  - storage.js — localStorage
-  - templates/ — home.js, projetos.js, cadastro.js
-- assets/images — imagens
-- pages/ — versões estáticas (backup)
+Resumo
+Projeto Single Page Application (SPA) com foco em acessibilidade (WCAG 2.1 AA), otimização para produção e boas práticas de versionamento (GitFlow). Implementa formulário com validação, persistência local, componentes UI (modal, toast, menu responsivo) e modos de contraste (escuro / alto contraste).
 
 Como rodar localmente
-- Abrir um servidor HTTP na pasta do projeto:
-  - Com Node:
-    npx http-server -p 8000
-  - Ou usar Live Server (VS Code).
+- Instalar dependências (opcional, para build):
+  npm install
+- Servir localmente (sem build):
+  npx http-server -p 8000
+- Rodar build (minificação JS/CSS/HTML):
+  npm run build
+- Build e deploy via GitHub Actions estão configurados no .github/workflows.
 
-Funcionalidades importantes
-- SPA com roteamento por hash e lazy-load de templates.
-- Templates exportam render() (HTML) e init().
-- Validação de formulário em tempo real (nome, e‑mail, CPF real, telefone, CEP, estado, data/idade).
-- Armazenamento em localStorage (chave `cadastro`).
-- Componentes: toast, modal, menu responsivo.
+Controle de versão
+- Branching: siga GitFlow (branches: main, develop, feature/*, release/*, hotfix/*)
 
-## Autor
+Acessibilidade
+- ARIA no modal, menu e controles.
+- Navegação por teclado (Tab, Shift+Tab, Escape fecha modal/menu).
+- Modo escuro e alto contraste com persistência no localStorage.
+- Foco visível e contraste de texto >= 4.5:1 nas variantes.
 
-Maycon Brandalero
+Otimização para produção
+- Scripts npm com esbuild / clean-css / html-minifier-terser para minificação.
+- GitHub Actions contempla build e deploy (GitHub Pages).
+- Recomenda-se compressão de imagens (externa) antes do push.
+
+Documentação adicional:
+- CONTRIBUTING.md
+- docs/ACCESSIBILITY.md 
+
+Autor: Maycon Brandalero
