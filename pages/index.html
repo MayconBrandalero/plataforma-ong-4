@@ -11,90 +11,50 @@
   <title>ONG Esperança - Início</title>
 </head>
 <body>
+  <a class="skip-link" href="#app">Pular para o conteúdo</a>
   <header>
-    <h1>ONG Esperança</h1>
-    <nav class="navbar">
-      <ul class="menu">
-        <li><a href="index.html">Início</a></li>
-        <li class="has-dropdown">
-          <a href="projetos.html">Projetos</a>
-          <ul class="dropdown">
-            <li><a href="projetos.html#educacao">Educação</a></li>
-            <li><a href="projetos.html#saude">Saúde</a></li>
-          </ul>
-        </li>
-        <li><a href="cadastro.html">Cadastro</a></li>
-      </ul>
-      <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
-    </nav>
+    <div class="header-inner">
+      <h1>ONG Esperança</h1>
+      <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <ul class="menu" id="main-menu">
+          <li><a href="#/" data-link>Início</a></li>
+          <li class="has-dropdown">
+            <a href="#/projetos" data-link>Projetos</a>
+            <ul class="dropdown" role="menu" aria-hidden="true">
+              <li><a href="#/projetos#educacao" data-link>Educação</a></li>
+              <li><a href="#/projetos#saude" data-link>Saúde</a></li>
+            </ul>
+          </li>
+          <li><a href="#/cadastro" data-link>Cadastro</a></li>
+        </ul>
+        <div class="accessibility-controls">
+          <button class="accessibility-button" id="theme-toggle" aria-pressed="false">Modo Escuro</button>
+          <button class="accessibility-button" id="contrast-toggle" aria-pressed="false">Alto Contraste</button>
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menu" aria-controls="main-menu" aria-expanded="false">&#9776;</button>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <h2>Sobre Nós</h2>
-      <div class="img-section">
-        <picture>
-          <source srcset="../assets/images/ong1.webp" type="image/webp">
-          <img src="../assets/images/ong1.jpg" alt="Equipe da ONG em ação social">
-        </picture>
-      </div>
-      <p>
-        Somos uma organização sem fins lucrativos dedicada a transformar vidas por meio de
-        projetos sociais. Trabalhamos com educação, saúde e sustentabilidade.
-      </p>
-    </section>
-
-    <section>
-      <h2>Missão, Visão e Valores</h2>
-      <ul>
-        <li><strong>Missão:</strong> Promover inclusão social.</li>
-        <li><strong>Visão:</strong> Um mundo mais justo e solidário.</li>
-        <li><strong>Valores:</strong> Respeito, solidariedade e transparência.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Projetos em Destaque</h2>
-      <div class="card">
-        <img src="../assets/images/sala_aula.jpg" alt="Projeto Educação">
-        <div class="card-title">Educação para Todos</div>
-        <div class="card-tags">
-          <span class="badge primary">Educação</span>
-          <span class="badge info">2025</span>
-        </div>
-        <p>Oferecemos reforço escolar e atividades culturais para crianças em situação de vulnerabilidade.</p>
-        <button class="button" onclick="showModal('Inscreva-se para este projeto!')">Quero Participar</button>
-      </div>
-      <div class="card">
-        <img src="../assets/images/cuidados.jpg" alt="Projeto Saúde">
-        <div class="card-title">Saúde Comunitária</div>
-        <div class="card-tags">
-          <span class="badge secondary">Saúde</span>
-          <span class="badge info">2025</span>
-        </div>
-        <p>Promovemos campanhas de vacinação, palestras e atendimentos gratuitos.</p>
-        <button class="button" onclick="showModal('Saiba como ajudar na área da saúde!')">Quero Ajudar</button>
-      </div>
-    </section>
-
-    <section>
-      <h2>Contato</h2>
-      <p>Email: contato@ongesperanca.org</p>
-      <p>Telefone: (11) 99999-9999</p>
-    </section>
+  <main id="app" role="main">
+    <!-- SPA content carregado via js/app.js -->
   </main>
 
   <footer>
     <p>&copy; 2025 ONG Esperança. Todos os direitos reservados.</p>
   </footer>
 
-  <div class="toast"></div>
-  <div class="modal">
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <div class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <div class="modal-content">
       <button class="modal-close" aria-label="Fechar">&times;</button>
       <div class="modal-message">Mensagem do modal</div>
     </div>
   </div>
-  <script src="../js/menu.js"></script>
+
+  <script type="module" src="../js/menu.js"></script>
+  <script type="module" src="../js/theme.js"></script>
+  <script type="module" src="../js/app.js"></script>
 </body>
 </html>
